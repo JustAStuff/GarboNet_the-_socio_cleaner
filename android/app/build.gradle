@@ -116,4 +116,15 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // Force a single consistent version of play-services-location to fix
+    // IncompatibleClassChangeError from react-native-geolocation-service
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 }
+
+configurations.all {
+    resolutionStrategy {
+        force "com.google.android.gms:play-services-location:21.3.0"
+    }
+}
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
